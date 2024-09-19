@@ -1,35 +1,35 @@
-const countDigits =(num)=>{
-    num = Math.abs(num);
-    if(num==0) return 1;
-    let count=0;
-    while(num>0){
-        num=Math.floor(num/10);
-        count++;
-    }
-    return count;
-}
+const countDigitsOfCurrentNumber = (currentNumber) => {
+  currentNumber = Math.abs(currentNumber);
+  if (currentNumber == 0) return 1;
+  let countOfDigits = 0;
+  while (currentNumber > 0) {
+    currentNumber = Math.floor(currentNumber / 10);
+    countOfDigits++;
+  }
+  return countOfDigits;
+};
 
-const checkArmstrong=(num)=>{
-    const totalDigits = countDigits(num);
-    const digits=String(num).split('');
+const checkArmstrong = (currentNumber) => {
+  const totalDigitsOfCurrentNumber = countDigitsOfCurrentNumber(currentNumber);
+  const digitsArray = String(currentNumber).split("");
 
-    let sum=0;
-    for(let i of digits){
-        sum+=Math.pow(Number(i),totalDigits);
-    }
-    if(sum===num){
-        return true;
-    }else{
-        return false;
-    }
-}
+  let sum = 0;
+  for (let i of digitsArray) {
+    sum += Math.pow(Number(i), totalDigitsOfCurrentNumber);
+  }
+  if (sum === currentNumber) {
+    return true;
+  } else {
+    return false;
+  }
+};
 
-const printArmstrong=(finalNumber)=>{
-    for(let i=0;i<=finalNumber;i++){
-        if(checkArmstrong(i)){
-            console.log(i);
-        }
+const printArmstrongNumbers = (finalNumber) => {
+  for (let i = 0; i <= finalNumber; i++) {
+    if (checkArmstrong(i)) {
+      console.log(i);
     }
-}
-console.log(checkArmstrong(153))
-printArmstrong(100000)
+  }
+};
+let finalNumber = 100000;
+printArmstrongNumbers(finalNumber);
